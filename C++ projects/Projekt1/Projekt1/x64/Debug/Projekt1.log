@@ -1,0 +1,3 @@
+﻿  Projekt1.cpp
+D:\Users\stani\Desktop\C# projects\Projekt1\Projekt1\Projekt1.cpp(151,33): warning C4244: "argument": konwersja z "double" do "int", możliwa utrata danych
+  Projekt1.vcxproj -> D:\Users\stani\Desktop\C# projects\Projekt1\x64\Debug\Projekt1.exe
