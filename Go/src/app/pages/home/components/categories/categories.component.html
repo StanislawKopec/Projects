@@ -1,0 +1,10 @@
+<button class="side-section-element" (click)="callAllProducts()">
+  <mat-card>ALL CATEGORIES</mat-card>
+</button>
+<button
+  class="side-section-element"
+  *ngFor="let category of categoriesString"
+  (click)="onShowCategory(category)"
+>
+  <mat-card>{{ category }}</mat-card>
+</button>

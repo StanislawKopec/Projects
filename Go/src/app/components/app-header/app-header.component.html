@@ -1,0 +1,59 @@
+<mat-toolbar class="container">
+  <div class="header-container">
+    <h2 class="header-text">Website Go</h2>
+    <div class="buttons">
+      <button class="cart-icon" mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon
+          [matBadge]="itemsQuantity"
+          [matBadgeHidden]="!itemsQuantity"
+          matBadgeColor="warn"
+          >shopping_cart</mat-icon
+        >
+      </button>
+      <button class="login-button" routerLink="/login">Log in</button>
+    </div>
+
+    <mat-menu #menu="matMenu">
+      <div class="menu">
+        <table
+          mat-table
+          *ngIf="cart.items.length"
+          [dataSource]="cart.items"
+          class="table"
+        >
+          <ng-container matColumnDef="product">
+            <th mat-header-cell *matHeaderCellDef>Product</th>
+            <th mat-cell *matCellDef="let item">
+              {{ item.name }}
+            </th>
+            <td mat-footer-cell *matFooterCellDef></td>
+          </ng-container>
+          <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef>Quantity</th>
+            <th mat-cell *matCellDef="let item">{{ item.quantity }}</th>
+            <td mat-footer-cell *matFooterCellDef>Total:</td>
+          </ng-container>
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef>Price</th>
+            <th mat-cell *matCellDef="let item">
+              {{ item.quantity }} x {{ item.price }}
+            </th>
+            <td mat-footer-cell *matFooterCellDef>
+              {{ getTotal(cart.items) | currency }}
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+        </table>
+        <div class="menuFooter" *ngIf="cart.items.length">
+          <button (click)="onClearCart()">Clear cart</button>
+          <button routerLink="cart">Checkout</button>
+        </div>
+
+        <div *ngIf="!cart.items.length" class="emptyCart">Cart Empty</div>
+      </div>
+    </mat-menu>
+  </div>
+</mat-toolbar>
