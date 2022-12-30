@@ -1,0 +1,24 @@
+<app-app-header [cart]="cart"></app-app-header>
+
+<div class="container">
+  <div class="side-section">
+    <app-categories
+      (allProducts)="getAllProductsAllCategories()"
+      (showCategory)="onShowCategory($event)"
+    ></app-categories>
+  </div>
+
+  <div class="main-section" layout-fill>
+    <mat-grid-list
+      class="list"
+      [cols]="columnsNumber"
+      rowHeight="350px"
+      gutterSize="16"
+    >
+      <mat-grid-tile class="tile" *ngFor="let product of products">
+        <app-product-box [product]="product" (addToCart)="onAddToCart($event)">
+        </app-product-box>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>
