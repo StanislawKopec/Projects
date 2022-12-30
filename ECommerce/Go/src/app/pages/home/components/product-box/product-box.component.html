@@ -1,7 +1,14 @@
 <mat-card class="box" *ngIf="product">
-  <img class="product-image" alt="photo" src="{{ product.imageUrl }} | safe" />
+  <img
+    (click)="openDialog()"
+    class="product-image"
+    alt="photo"
+    src="{{ product.image }} "
+  />
   <div class="title-desc-container">
-    <span class="product-title">{{ product.title }}</span>
+    <span class="product-title"
+      ><a (click)="openDialog()">{{ product.title }}</a></span
+    >
   </div>
   <div class="price-icon-container">
     <span>

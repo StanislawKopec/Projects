@@ -1,4 +1,4 @@
-<mat-card class="max-w-7xl container" *ngIf="cart.items.length">
+<mat-card class="max-w-7xl container-notNg" *ngIf="cart.items.length">
   <table
     mat-table
     [dataSource]="dataSource"
@@ -81,7 +81,7 @@
           mat-raised-button
           color="primary"
           class="float-right"
-          (click)="onCheckout()"
+          (click)="onCheckout(cart.items)"
         >
           Proceed to Checkout
         </button>

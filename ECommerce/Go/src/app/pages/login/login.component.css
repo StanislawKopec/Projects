@@ -1,11 +1,24 @@
-.container {
+.container-notNg {
   padding: 20%;
+  padding-top: 10%;
   background-color: grey;
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
+}
+@media (max-width: 500px) {
+  .container-notNg {
+    padding: 5%;
+    background-color: grey;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding-top: 5%;
+  }
 }
 .login-container {
   display: flex;
@@ -35,4 +48,8 @@ form button {
   outline: none;
   border-radius: 2px;
   cursor: pointer;
+}
+.button-back {
+  display: flex;
+  float: right;
 }

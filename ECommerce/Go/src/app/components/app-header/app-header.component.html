@@ -1,6 +1,13 @@
-<mat-toolbar class="container">
+<mat-toolbar class="container-notNg">
   <div class="header-container">
     <h2 class="header-text">Website Go</h2>
+    <button
+      *ngIf="home.innerWidth < 500"
+      class="categories-button"
+      (click)="showCategoriesChange()"
+    >
+      Categories
+    </button>
     <div class="buttons">
       <button class="cart-icon" mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon
@@ -10,9 +17,22 @@
           >shopping_cart</mat-icon
         >
       </button>
-      <button class="login-button" routerLink="/login">Log in</button>
+      <button
+        *ngIf="loginService.isLogged | async"
+        class="login-button"
+        (click)="Logout()"
+      >
+        Log out
+      </button>
+      <button
+        *ngIf="loginService.isNotLogged | async"
+        class="login-button"
+        routerLink="/login"
+      >
+        Log in
+      </button>
+      <span *ngIf="loginService.logged">Welcome {{ loggedUser }}</span>
     </div>
-
     <mat-menu #menu="matMenu">
       <div class="menu">
         <table

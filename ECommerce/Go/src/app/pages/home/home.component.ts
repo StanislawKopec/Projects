@@ -11,7 +11,8 @@ import { Cart } from 'src/app/models/cart.model';
 import { Product } from 'src/app/models/product.model';
 import { CartService } from 'src/app/service/cart.service';
 import { ProductService } from 'src/app/service/product.service';
-
+import { MatDialog } from '@angular/material/dialog';
+import { PopupComponent } from './components/popup/popup.component';
 @Component({
   selector: 'app-home',
   templateUrl: `./home.component.html`,
@@ -23,6 +24,8 @@ export class HomeComponent implements OnInit {
   category: string | undefined;
   public innerWidth: any;
   columnsNumber = 3;
+  display = false;
+  public showCategories = false;
 
   constructor(
     private productService: ProductService,
@@ -39,6 +42,9 @@ export class HomeComponent implements OnInit {
       this.columnsNumber = 2;
     } else if (this.innerWidth <= 700) {
       this.columnsNumber = 1;
+    }
+    if (this.innerWidth > 500) {
+      this.showCategories = false;
     }
   }
   ngOnInit(): void {
@@ -62,7 +68,8 @@ export class HomeComponent implements OnInit {
   }
   onAddToCart(product: Product): void {
     this.cartService.addToCart({
-      image: product.imageUrl,
+      //image: product.imageUrl,
+      image: product.image,
       name: product.title,
       price: product.price,
       quantity: 1,

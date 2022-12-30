@@ -16,11 +16,14 @@ export class CartService {
     const items = [...this.cart.value.items];
     const itemInCart = items.find((_item) => _item.id === item.id);
     if (itemInCart) {
-      itemInCart.quantity += 1;
+      itemInCart.quantity += item.quantity;
     } else {
       items.push(item);
     }
-    this._snackBar.open('1 item added to cart.', 'Ok', { duration: 3000 });
+    this._snackBar.open(`${item.quantity} items added to cart.`, 'Ok', {
+      duration: 3000,
+      panelClass: 'my-custom-snackbar',
+    });
 
     this.cart.next({ items });
   }

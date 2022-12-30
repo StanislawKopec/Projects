@@ -1,0 +1,59 @@
+<div class="container-notNg">
+  <div class="login-container">
+    <div class="login-form">
+      <h2>register</h2>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            formControlName="username"
+            id="username"
+            type="text"
+            name="username"
+            class="form-control"
+            (click)="usernameExists = false"
+          />
+          <span
+            *ngIf="username && username.invalid && username.touched"
+            style="color: red"
+            >Invalid input. Make sure username is at least 6 characters
+            long</span
+          >
+          <span style="color: red" *ngIf="usernameExists == true"
+            >Username already exists</span
+          >
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            name="password"
+            class="form-control"
+            formControlName="password"
+          />
+          <span
+            *ngIf="password && password.invalid && password.touched"
+            style="color: red"
+            >Invalid input. Make sure password is at least 6 characters
+            long</span
+          >
+        </div>
+
+        <div class="form-group">
+          <button
+            [disabled]="registerForm.invalid"
+            type="submit"
+            class="btn btn-primary"
+          >
+            Submit
+          </button>
+          <button routerLink="/home" class="button-back">Back</button>
+        </div>
+      </form>
+
+      <button routerLink="/login">login</button>
+    </div>
+  </div>
+</div>

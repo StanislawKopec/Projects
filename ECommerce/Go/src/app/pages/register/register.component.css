@@ -1,0 +1,55 @@
+.container-notNg {
+  padding: 20%;
+  background-color: grey;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding-top: 10%;
+}
+@media (max-width: 500px) {
+  .container-notNg {
+    padding: 5%;
+    background-color: grey;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding-top: 5%;
+  }
+}
+.login-container {
+  display: flex;
+  padding: 3em;
+  background-color: white;
+}
+form .form-group {
+  margin-bottom: 1em;
+}
+form label {
+  display: block;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+form input {
+  width: 100%;
+  padding: 0.5em 0.3em;
+  margin-bottom: 0.5em;
+  font-size: 1.2em;
+}
+form button {
+  background-color: black;
+  padding: 0.5em 1em;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.button-back {
+  display: flex;
+  float: right;
+}

@@ -1,7 +1,7 @@
 <app-app-header [cart]="cart"></app-app-header>
 
-<div class="container">
-  <div class="side-section">
+<div class="container-notNg">
+  <div *ngIf="innerWidth > 500 || showCategories" class="side-section">
     <app-categories
       (allProducts)="getAllProductsAllCategories()"
       (showCategory)="onShowCategory($event)"

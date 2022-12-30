@@ -24,7 +24,8 @@ export class CategoriesComponent implements OnInit {
       .getCategories()
       .subscribe((response) => {
         for (let i = 0; i < response.length; i++) {
-          this.categoriesString.push(response[i].name);
+          this.categoriesString.push(response[i].toString());
+          //this.categoriesString.push(response[i].name);
         }
       });
   }

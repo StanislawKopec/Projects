@@ -5,17 +5,26 @@
   min-width: 150px;
   margin-left: 0%;
 }
-.container {
+.container-notNg {
   display: flex;
   height: auto;
   caret-color: transparent;
   min-height: 90%;
+  z-index: 2;
 }
 .main-section {
   background-color: grey;
   width: 85%;
   float: right;
   display: flex;
+}
+@media (max-width: 500px) {
+  .main-section {
+    background-color: grey;
+    width: 100%;
+    float: right;
+    display: flex;
+  }
 }
 .list {
   width: 100%;

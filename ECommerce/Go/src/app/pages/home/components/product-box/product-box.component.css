@@ -15,7 +15,8 @@
   padding-right: 10px;
   text-align: center;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 20px;
+  overflow-y: scroll;
 }
 .price-icon-container {
   width: 100%;
@@ -28,5 +29,15 @@
   justify-content: space-evenly;
 }
 .title-desc-container {
+  overflow: scroll;
+  height: 50px;
   padding-top: 10px;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.container-notNg {
+  min-height: 500px;
+  width: 100%;
+  position: absolute;
 }

@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyparser = require("body-parser");
 const { isTryStatement } = require("typescript");
+const https = require("https://goappapi.azurewebsites.net/checkout");
 
 const app = express();
 app.use(express.static("public"));
@@ -27,8 +28,8 @@ app.post("/checkout", async (req, res, next) => {
         quantity: item.quantity,
       })),
       mode: "payment",
-      success_url: "http://localhost:4242/success.html",
-      cancel_url: "http://localhost:4242/cancel.html",
+      success_url: "https://goappapi.azurewebsites.net/checkout/success.html",
+      cancel_url: "https://goappapi.azurewebsites.net/checkout/cancel.html",
     });
 
     res.status(200).json(session);
@@ -37,4 +38,6 @@ app.post("/checkout", async (req, res, next) => {
   }
 });
 
-app.listen(4242, () => console.log("app running on 4242"));
+app.listen(checkout, () =>
+  console.log("app running on https://goappapi.azurewebsites.net/checkout")
+);
