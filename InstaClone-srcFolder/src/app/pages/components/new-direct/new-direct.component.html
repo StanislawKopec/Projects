@@ -1,0 +1,42 @@
+<div class="main-container">
+  <div class="header">
+    <i class="fa-solid fa-x item1" (click)="closeDialog()"></i>
+    <h2 class="item2">New Message</h2>
+    <button class="item3" (click)="onAddChatClick()">Next</button>
+  </div>
+  <div class="search-container">
+    <h2 class="item1">To:</h2>
+    <div [formGroup]="formGroup" class="form">
+      <div class="search" appearance="legacy">
+        <input
+          id="optionsInput"
+          class="input-field"
+          placeholder="search"
+          type="text"
+          matInput
+          [matAutocomplete]="auto"
+          formControlName="username"
+        />
+      </div>
+      <mat-autocomplete #auto="matAutocomplete"> </mat-autocomplete>
+    </div>
+  </div>
+  <div class="search-results">
+    <div
+      class="empty"
+      *ngIf="!formGroup.get('username')?.value || !filteredOptions.length"
+    >
+      <h2 class="item1">Propositions</h2>
+      <p class="item2">No account found</p>
+    </div>
+    <div class="propositions" *ngIf="formGroup.get('username')?.value">
+      <mat-option
+        *ngFor="let option of filteredOptions"
+        [value]="option"
+        (click)="onChooseOptionClick(option)"
+      >
+        {{ option }}
+      </mat-option>
+    </div>
+  </div>
+</div>

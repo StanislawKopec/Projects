@@ -1,0 +1,112 @@
+<div class="container-main">
+  <div class="container-content">
+    <div class="left">
+      <div class="btn-container">
+        <button class="top-btn" (click)="openDialog()">
+          {{ currentUserName }} <i class="fa-solid fa-angle-down"></i>
+        </button>
+        <button class="createMessage" (click)="openDirectDialog()">
+          <i class="fa-regular fa-pen-to-square"></i>
+        </button>
+      </div>
+      <div class="friends">
+        <div
+          class="friend"
+          *ngFor="let chat of chats"
+          (click)="chooseChatClick(this.chat)"
+        >
+          <span class="text"
+            ><img class="profile-image" src="{{ chat.imageUrl }}" />
+            <p class="chat-name">{{ chat.name }}</p>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="empty" *ngIf="!currentChatId">
+        <i class="fa-regular fa-paper-plane"></i>
+        <h2>Your messages</h2>
+        <p>Send private photos and messages to friends or groups</p>
+        <button mat-button class="send-message" (click)="openDirectDialog()">
+          Send message
+        </button>
+      </div>
+
+      <div class="chat-container" *ngIf="currentChatId">
+        <div class="header">
+          <div class="user-header-container">
+            <h2 class="username">
+              <img class="profile-image" src="{{ currentChatImage }}" />
+              {{ currentChatUser }}
+            </h2>
+          </div>
+          <div class="icons">
+            <i class="fa-solid fa-phone icon-h"></i>
+            <i class="fa-solid fa-video icon-h"></i>
+            <i class="fa-solid fa-circle-info icon-h"></i>
+          </div>
+        </div>
+
+        <div class="messages-container" #scroll>
+          <div class="reply-box">
+            <div
+              *ngFor="let message of currentChatMessages"
+              [ngClass]="{
+                'comment-container': true,
+                'creator-comment-container': isCommentCreator(message)
+              }"
+            >
+              <div class="comments-box">
+                <p class="comment-name">{{ message.creatorName }}</p>
+                <p
+                  *ngIf="message.message"
+                  [ngClass]="{
+                    comment: true,
+                    'creator-comment': isCommentCreator(message)
+                  }"
+                >
+                  {{ message.message }}
+                </p>
+                <div class="image-container" *ngIf="message.imageUrl">
+                  <img id="post-preview-image" src="{{ message.imageUrl }}" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="reply-action-bar-container">
+            <div class="reply-action-bar">
+              <button
+                (keydown.enter)="onSendClick(commentInput)"
+                (click)="onSendClick(commentInput)"
+                color="warn"
+                class="btn"
+              >
+                Publish
+              </button>
+
+              <label class="button" for="upload" *ngIf="!commentInput.value"
+                ><i class="fa-regular fa-image"></i
+              ></label>
+              <input
+                id="upload"
+                #photoSelector
+                (change)="onPhotoSelected(photoSelector)"
+                type="file"
+                accept="image/*"
+              />
+
+              <input
+                (keydown.enter)="onSendClick(commentInput)"
+                placeholder="Comment"
+                #commentInput
+                class="comment-input"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</div>

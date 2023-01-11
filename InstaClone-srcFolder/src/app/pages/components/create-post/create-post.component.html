@@ -1,0 +1,67 @@
+<div class="container" *ngIf="!selectedImageFile">
+  <div class="header">
+    <h2 class="header-text">Create Post</h2>
+  </div>
+  <div class="content-container">
+    <div class="content">
+      <h3 class="drop">Drop here</h3>
+      <label class="button" for="upload">Select from desktop</label>
+      <input
+        id="upload"
+        #photoSelector
+        (change)="onPhotoSelected(photoSelector)"
+        type="file"
+        accept="image/*"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="container-after" *ngIf="selectedImageFile">
+  <div class="header-after">
+    <button class="back"><i class="fa-solid fa-arrow-left back"></i></button>
+
+    <h2 class="header-text">Create Post</h2>
+    <button class="publish-btn" (click)="onPostClick(commentInput)">
+      Publish
+    </button>
+  </div>
+  <div class="content-container">
+    <div class="image-container">
+      <img id="post-preview-image" />
+    </div>
+    <div class="description-container">
+      <div class="username">{{ username }}</div>
+      <textarea
+        placeholder="Add description..."
+        #commentInput
+        class="description"
+        rows="10"
+      ></textarea>
+    </div>
+  </div>
+</div>
+
+<!--<mat-card>
+  <mat-card-header
+    ><mat-card-title>Create post</mat-card-title>
+    <button mat-button (click)="onPostClick(commentInput)">Post</button>
+  </mat-card-header>
+  <mat-card-content>
+    <div>
+      <textarea #commentInput placeholder="Your comment"></textarea>
+    </div>
+    <div *ngIf="selectedImageFile" id="post-preview">
+      <img id="post-preview-image" />
+    </div>
+
+    <h3>Drop here</h3>
+    <button mat-button>Choose from desktop</button>
+    <input
+      #photoSelector
+      (change)="onPhotoSelected(photoSelector)"
+      type="file"
+      accept="image/*"
+    />
+  </mat-card-content>
+</mat-card>-->
