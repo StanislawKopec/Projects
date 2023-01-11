@@ -1,0 +1,117 @@
+<div class="container-main">
+  <div class="header">
+    <button class="button-menu" [matMenuTriggerFor]="menu">
+      <mat-icon class="icon-menu">reorder</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="start">
+        <span>Choose a City</span>
+      </button>
+    </mat-menu>
+    <h2 class="header-text">Weather Today</h2>
+  </div>
+
+  <div class="main-container">
+    <div class="cities-container">
+      <h2>Choose a city</h2>
+      <mat-button-toggle-group
+        class="toggle-group"
+        #toggleBtn="matButtonToggleGroup"
+      >
+        <mat-button-toggle
+          [ngClass]="
+            toggleBtn.value == 'choose' || !toggleBtn.value
+              ? 'toggle-button-pressed'
+              : 'toggle-button'
+          "
+          (click)="toggleState = 'choose'"
+          value="choose"
+          >Choose city</mat-button-toggle
+        >
+        <mat-button-toggle
+          [ngClass]="
+            toggleBtn.value == 'search'
+              ? 'toggle-button-pressed'
+              : 'toggle-button'
+          "
+          (click)="toggleState = 'search'"
+          value="search"
+          >Search for city</mat-button-toggle
+        >
+      </mat-button-toggle-group>
+
+      <div class="one-in-line" *ngIf="toggleState == 'choose'">
+        <mat-select
+          class="options-menu"
+          placeholder="select city from list"
+          *ngIf="!currentCity"
+        >
+          <mat-option
+            (click)="currentCity = this.city"
+            *ngFor="let city of cities"
+            >{{ city }}
+          </mat-option>
+        </mat-select>
+
+        <mat-select
+          class="options-menu"
+          placeholder="{{ currentCity }}"
+          *ngIf="currentCity"
+        >
+          <mat-option
+            (click)="currentCity = this.city"
+            *ngFor="let city of cities"
+            >{{ city }}
+          </mat-option>
+        </mat-select>
+      </div>
+
+      <form [formGroup]="searchForm">
+        <div class="one-in-line">
+          <input
+            type="text"
+            id="address"
+            class="search-input"
+            *ngIf="toggleState == 'search'"
+            name="address"
+            formControlName="searchInput"
+            (click)="invalidInput = false"
+          />
+          <span
+            *ngIf="
+              ((searchInput?.invalid && searchInput?.touched) ||
+                invalidInput == true) &&
+              toggleState == 'search'
+            "
+            style="color: red"
+          >
+            Wrong city, try different spelling or choose from list
+          </span>
+        </div>
+
+        <div class="one-in-line">
+          <button
+            *ngIf="toggleState == 'search'"
+            type="submit"
+            mat-button
+            (click)="parseData()"
+            class="submit-button"
+            [disabled]="searchForm.invalid"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+      <button
+        *ngIf="toggleState == 'choose'"
+        type="button"
+        mat-button
+        (click)="parseData()"
+        class="submit-button"
+        [disabled]="currentCity == ''"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</div>

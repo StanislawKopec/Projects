@@ -1,0 +1,89 @@
+<div class="container-main">
+  <div class="header">
+    <button class="button-menu" [matMenuTriggerFor]="menu">
+      <mat-icon class="icon-menu">reorder</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/start">
+        <span>Choose a City</span>
+      </button>
+    </mat-menu>
+    <h2 class="header-text">Weather Today</h2>
+  </div>
+
+  <div class="container-weather">
+    <div class="top-box">
+      <div class="top-left-box">
+        <img class="background" src="{{ mainImageUrl }}" />
+        <div class="temperature-box">
+          <h1>{{ temperature }} C</h1>
+          <h2>{{ weatherType }}</h2>
+        </div>
+        <div class="weather-status">
+          <div class="humidity">
+            <h3>Humidity</h3>
+            <h3>{{ humidity }}</h3>
+          </div>
+          <div class="wind">
+            <h3>Wind</h3>
+            <h3>{{ wind }}</h3>
+          </div>
+        </div>
+      </div>
+      <div class="top-right-box">
+        <img
+          class="background"
+          src="https://cdn-icons-png.flaticon.com/512/562/562460.png"
+        />
+        <h2 class="city">{{ city }}</h2>
+      </div>
+    </div>
+    <div class="middle-box">
+      <div *ngFor="let tmp of tmpArray; let i = index" class="hour">
+        <h2>{{ tmp }} C</h2>
+        <h2>{{ hoursArray[i] }}:00</h2>
+      </div>
+    </div>
+    <div class="bottom-box">
+      <div class="bottom-left-box">
+        <div class="date-box">
+          <div class="one-in-line">
+            <h1>{{ currentDayStr }}</h1>
+          </div>
+          <div class="one-in-line">
+            <h2>{{ currentDate }}</h2>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-right-box">
+        <div class="day">
+          <h3>{{ day2[2] }}</h3>
+          <img src="{{ day2[3] }}" />
+          <h3>{{ day2[0] }} C</h3>
+          <h5>{{ day2[1] }}</h5>
+        </div>
+        <div class="day">
+          <h3>{{ day3[2] }}</h3>
+          <img src="{{ day3[3] }}" />
+          <h3>{{ day3[0] }} C</h3>
+          <h5>{{ day3[1] }}</h5>
+        </div>
+        <div class="day">
+          <h3>{{ day4[2] }}</h3>
+          <img src="{{ day4[3] }}" />
+          <h3>{{ day4[0] }} C</h3>
+          <h5>{{ day4[1] }}</h5>
+        </div>
+        <div class="day">
+          <h3>{{ day5[2] }}</h3>
+          <img src="{{ day5[3] }}" />
+          <h3>{{ day5[0] }} C</h3>
+          <h5>{{ day5[1] }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="weatherapiLink">
+    <a href="https://openweathermap.org/api">Data provided by OpenWeather</a>
+  </div>
+</div>
