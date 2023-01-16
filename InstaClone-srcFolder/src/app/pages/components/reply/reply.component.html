@@ -1,0 +1,38 @@
+<div class="reply-box" cdkScrollable>
+  <div
+    *ngFor="let comment of comments"
+    [ngClass]="{
+      'comment-container': true,
+      'creator-comment-container': isCommentCreator(comment)
+    }"
+  >
+    <div class="comments-box">
+      <p class="comment-name">{{ comment.creatorName }}</p>
+      <p
+        [ngClass]="{
+          comment: true,
+          'creator-comment': isCommentCreator(comment)
+        }"
+      >
+        {{ comment.comment }}
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="reply-action-bar">
+  <button
+    (keydown.enter)="onSendClick(commentInput)"
+    (click)="onSendClick(commentInput)"
+    color="warn"
+    class="btn"
+  >
+    Publish
+  </button>
+  <input
+    (keydown.enter)="onSendClick(commentInput)"
+    placeholder="Comment"
+    #commentInput
+    class="comment-input"
+  />
+</div>

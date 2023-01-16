@@ -1,0 +1,181 @@
+@import "src/variables";
+
+::file-selector-button {
+  display: none;
+}
+.container-main {
+  overflow-x: hidden;
+}
+.footer {
+  position: absolute;
+  display: flex;
+  height: 3rem;
+  width: 100%;
+  background-color: grey;
+  bottom: 0;
+
+  .icon-f {
+    width: 20%;
+    margin: auto;
+    text-align: center;
+  }
+}
+.btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.5rem;
+}
+.top-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  width: 100%;
+  height: 100%;
+}
+.header {
+  position: relative;
+  height: 2.5rem;
+  background-color: grey;
+  .item-h1 {
+    position: absolute;
+    left: 0;
+    margin-left: 10px;
+    width: 10%;
+    min-width: 50px;
+    text-align: center;
+    top: 50%;
+    height: 100%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+  }
+  .item-h2 {
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+    width: 10%;
+    height: 100%;
+    min-width: 50px;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+  }
+  .item-h {
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .icon-h {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+.top-content {
+  height: 150px;
+  background-color: azure;
+  display: flex;
+  .logoutBtn-container {
+    margin: auto 200px;
+    width: 200px;
+    height: 100px;
+    .logoutBtn {
+      height: 100%;
+      width: 100%;
+      color: black;
+      background-color: red;
+      font-size: 30px;
+      font-weight: 200;
+      cursor: pointer;
+    }
+  }
+}
+.activity {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  border-top: 1px solid $border-color;
+  box-sizing: border-box;
+  .activity-item {
+    width: calc(100% / 3);
+    text-align: center;
+  }
+}
+.toggle-group {
+  width: 100%;
+  margin: 0;
+  .toggle-btn {
+    border-top: 1px solid $border-color;
+    box-sizing: border-box;
+    width: calc(100% / 3);
+  }
+  .toggle-btn-pressed {
+    border-top: 1px solid $border-color;
+    box-sizing: border-box;
+    width: calc(100% / 3);
+    color: blue;
+  }
+}
+.content-container {
+  width: 100%;
+  min-height: 570px;
+}
+.content {
+  min-height: 500px;
+  width: 100%;
+  background-color: aquamarine;
+  text-align: center;
+}
+.photo-name {
+  margin-left: 15px;
+  height: 100px;
+  width: 100px;
+  .photo {
+    height: 70%;
+    width: auto;
+    position: relative;
+    border-radius: 50%;
+    perspective: 1px;
+    #profile-image {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      object-fit: fill;
+      border-radius: 50%;
+    }
+  }
+  #upload {
+    display: none;
+  }
+}
+.edit-name {
+  position: relative;
+  height: 100%;
+  width: 100px;
+  margin: 15px;
+  .edit-name-group {
+    width: 200px;
+    display: flex;
+    margin: 10px;
+    .name {
+      margin-right: 10px;
+    }
+  }
+}
+.edit-profile {
+  width: 200px;
+}
