@@ -1,0 +1,6 @@
+D:\Users\stani\Desktop\C# projects\GoApiDapper\UserDB\bin\Debug\UserDB.dacpac
+D:\Users\stani\Desktop\C# projects\GoApiDapper\UserDB\bin\Debug\UserDB.dll
+D:\Users\stani\Desktop\C# projects\GoApiDapper\UserDB\bin\Debug\UserDB.pdb
+D:\Users\stani\Desktop\C# projects\GoApiDapper\UserDB\obj\Debug\UserDB.sqlproj.AssemblyReference.cache
+D:\Users\stani\Desktop\C# projects\GoApiDapper\UserDB\obj\Debug\UserDB.dll
+D:\Users\stani\Desktop\C# projects\GoApiDapper\UserDB\obj\Debug\UserDB.pdb

@@ -1,0 +1,63 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[ProductCategories]
+       [dbo].[Products]
+       [dbo].[Users]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The type for column Id in table [dbo].[ProductCategories] is currently  FLOAT (53) NULL but is being changed to  INT
+         IDENTITY (1, 1) NOT NULL. Data loss could occur and deployment may fail if the column contains data that is incompatible
+         with type  INT IDENTITY (1, 1) NOT NULL.
+       The type for column Id in table [dbo].[Products] is currently  FLOAT (53) NULL but is being changed to  INT IDENTITY (1,
+         1) NOT NULL. Data loss could occur and deployment may fail if the column contains data that is incompatible with type 
+         INT IDENTITY (1, 1) NOT NULL.
+       The type for column price in table [dbo].[Products] is currently  FLOAT (53) NULL but is being changed to  DECIMAL (18,
+         2) NOT NULL. Data loss could occur and deployment may fail if the column contains data that is incompatible with type 
+         DECIMAL (18, 2) NOT NULL.
+       The column [dbo].[Users].[salt] on table [dbo].[Users] must be added, but the column has no default value and does not
+         allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add
+         a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a
+         deployment option.
+       The type for column Id in table [dbo].[Users] is currently  FLOAT (53) NULL but is being changed to  INT IDENTITY (1, 1)
+         NOT NULL. Data loss could occur and deployment may fail if the column contains data that is incompatible with type  INT
+         IDENTITY (1, 1) NOT NULL.
+
+** User actions
+     Table rebuild
+       [dbo].[ProductCategories] (Table)
+       [dbo].[Products] (Table)
+       [dbo].[Users] (Table)
+     Create
+       [dbo].[spProductCategories_GetAll] (Procedure)
+       [dbo].[spProducts_Get] (Procedure)
+       [dbo].[spProducts_GetAll] (Procedure)
+       [dbo].[spProducts_GetByCategory] (Procedure)
+       [dbo].[spUser_Delete] (Procedure)
+       [dbo].[spUser_Get] (Procedure)
+       [dbo].[spUser_GetAll] (Procedure)
+       [dbo].[spUser_Insert] (Procedure)
+       [dbo].[spUser_Login] (Procedure)
+       [dbo].[spUser_Update] (Procedure)
+
+** Supporting actions
+
+The column Id on table [dbo].[ProductCategories] must be changed from NULL to NOT NULL. If the table contains data, the ALTER script may not work. To avoid this issue, you must add values to this column for all rows or mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The type for column Id in table [dbo].[ProductCategories] is currently  FLOAT (53) NULL but is being changed to  INT IDENTITY (1, 1) NOT NULL. Data loss could occur and deployment may fail if the column contains data that is incompatible with type  INT IDENTITY (1, 1) NOT NULL.
+The column Name on table [dbo].[ProductCategories] must be changed from NULL to NOT NULL. If the table contains data, the ALTER script may not work. To avoid this issue, you must add values to this column for all rows or mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The column category on table [dbo].[Products] must be changed from NULL to NOT NULL. If the table contains data, the ALTER script may not work. To avoid this issue, you must add values to this column for all rows or mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The column description on table [dbo].[Products] must be changed from NULL to NOT NULL. If the table contains data, the ALTER script may not work. To avoid this issue, you must add values to this column for all rows or mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The column Id on table [dbo].[Products] must be changed from NULL to NOT NULL. If the table contains data, the ALTER script may not work. To avoid this issue, you must add values to this column for all rows or mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The type for column Id in table [dbo].[Products] is currently  FLOAT (53) NULL but is being changed to  INT IDENTITY (1, 1) NOT NULL. Data loss could occur and deployment may fail if the column contains data that is incompatible with type  INT IDENTITY (1, 1) NOT NULL.
+The column imageUrl on table [dbo].[Products] must be changed from NULL to NOT NULL. If the table contains data, the ALTER script may not work. To avoid this issue, you must add values to this column for all rows or mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The column price on table [dbo].[Products] must be changed from NULL to NOT NULL. If the table contains data, the ALTER script may not work. To avoid this issue, you must add values to this column for all rows or mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The type for column price in table [dbo].[Products] is currently  FLOAT (53) NULL but is being changed to  DECIMAL (18, 2) NOT NULL. Data loss could occur and deployment may fail if the column contains data that is incompatible with type  DECIMAL (18, 2) NOT NULL.
+The column title on table [dbo].[Products] must be changed from NULL to NOT NULL. If the table contains data, the ALTER script may not work. To avoid this issue, you must add values to this column for all rows or mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The column [dbo].[Users].[salt] on table [dbo].[Users] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The column Id on table [dbo].[Users] must be changed from NULL to NOT NULL. If the table contains data, the ALTER script may not work. To avoid this issue, you must add values to this column for all rows or mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The type for column Id in table [dbo].[Users] is currently  FLOAT (53) NULL but is being changed to  INT IDENTITY (1, 1) NOT NULL. Data loss could occur and deployment may fail if the column contains data that is incompatible with type  INT IDENTITY (1, 1) NOT NULL.
+The column password on table [dbo].[Users] must be changed from NULL to NOT NULL. If the table contains data, the ALTER script may not work. To avoid this issue, you must add values to this column for all rows or mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The column userName on table [dbo].[Users] must be changed from NULL to NOT NULL. If the table contains data, the ALTER script may not work. To avoid this issue, you must add values to this column for all rows or mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAANhkbjE2TgE6GKXqOGxIC8AAAAAACAAAAAAAQZgAAAAEAACAAAABk+JhSU5ypLiF0mImNO4pgLjqbKJYbWbL99/BwEKIUrQAAAAAOgAAAAAIAACAAAAA3dwGkzSKH6oGVnOEaCWb1riUJFgfI5OCGBO+Uui4Z3oAAAAD+7zIGZPUnyiYewt9LHyX5K+YIp/z/sTqqIV10IqsojYWgS/CY9DNhT3yQEUfHPLAjHGJqjk8Osj92UJAWUz1AoSSuE0+7oDp5LjQn3iieZ5cg8k1c9b1I5fL824QOgnwpN9DcplYJZyzMqoUEs+HP7RUmj43VeM3LsO2OkF+g5UAAAABbrn0582/oVCmrCUSjOvg9BBcbOdcseGrBUeJzwgQnRAgcNpTgQkhUeiCl5j24lkupx0q6NGkzxZjY/t7F3fvo</EncryptedPassword>
+    <History>True|2022-11-16T13:35:14.5226441Z;True|2022-11-16T14:32:06.5406306+01:00;True|2022-11-16T14:27:07.5110233+01:00;False|2022-11-16T14:26:16.5129607+01:00;False|2022-11-16T14:21:52.2138843+01:00;False|2022-11-16T14:16:17.8089631+01:00;False|2022-11-16T14:13:36.3821081+01:00;False|2022-11-16T14:10:43.5118426+01:00;False|2022-11-16T14:09:46.1186374+01:00;False|2022-11-16T14:06:47.4188920+01:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="Azure">
+      <Value>Data Source=tcp:testingstuff.database.windows.net,1433%3bInitial Catalog=Go%3bUser Id=StanislawK%40testingstuff%3bPassword=Kopec123</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>
