@@ -1,0 +1,2 @@
+C:\Users\stani\source\repos\Projekt .NET\Projekt .NET\x64\Debug\Projekt .NET.vcxproj.AssemblyReference.cache
+C:\Users\stani\source\repos\Projekt .NET\Projekt .NET\x64\Debug\Projekt .NET.vcxproj.SuggestedBindingRedirects.cache

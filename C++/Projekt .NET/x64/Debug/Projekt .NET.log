@@ -1,0 +1,5 @@
+﻿  Projekt .NET.cpp
+C:\Users\stani\source\repos\Projekt .NET\Projekt .NET\Projekt .NET.cpp(240,23): warning C4267: "inicjowanie": konwersja z "size_t" do "int", możliwa utrata danych
+C:\Users\stani\source\repos\Projekt .NET\Projekt .NET\Projekt .NET.cpp(299,77): warning C4267: "argument": konwersja z "size_t" do "int", możliwa utrata danych
+  AssemblyInfo.obj : napotkano moduł MSIL; konsolidowanie przyrostowe jest wyłączone dla modułów MSIL; zostanie wykonana pełna konsolidacja
+  Projekt .NET.vcxproj -> C:\Users\stani\source\repos\Projekt .NET\x64\Debug\Projekt .NET.exe
