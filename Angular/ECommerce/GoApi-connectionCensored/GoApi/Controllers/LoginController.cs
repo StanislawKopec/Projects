@@ -84,7 +84,7 @@ namespace GoApi.Controllers
 
         [Route("register")]
         [HttpPost]
-        public async Task<ActionResult> Register( RegisterUserJson userData)
+        public async Task<ActionResult> Register(RegisterUserJson userData)
         {
             try
             {

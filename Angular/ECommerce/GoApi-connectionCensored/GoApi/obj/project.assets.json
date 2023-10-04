@@ -2859,11 +2859,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Users\\stani\\Desktop\\C# projects\\GoApi\\GoApi\\GoApi.csproj",
+      "projectUniqueName": "C:\\Users\\stani\\OneDrive\\Dokumenty\\GitHub\\Projects\\Angular\\ECommerce\\GoApi-connectionCensored\\GoApi\\GoApi.csproj",
       "projectName": "GoApi",
-      "projectPath": "D:\\Users\\stani\\Desktop\\C# projects\\GoApi\\GoApi\\GoApi.csproj",
+      "projectPath": "C:\\Users\\stani\\OneDrive\\Dokumenty\\GitHub\\Projects\\Angular\\ECommerce\\GoApi-connectionCensored\\GoApi\\GoApi.csproj",
       "packagesPath": "C:\\Users\\stani\\.nuget\\packages\\",
-      "outputPath": "D:\\Users\\stani\\Desktop\\C# projects\\GoApi\\GoApi\\obj\\",
+      "outputPath": "C:\\Users\\stani\\OneDrive\\Dokumenty\\GitHub\\Projects\\Angular\\ECommerce\\GoApi-connectionCensored\\GoApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2878,6 +2878,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2952,7 +2953,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -12,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContextPool<GoApiDbContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("Somee"))
+options.UseSqlServer(builder.Configuration.GetConnectionString("Azure"))
 );
 
 
