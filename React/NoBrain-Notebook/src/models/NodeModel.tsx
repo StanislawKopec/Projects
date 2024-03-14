@@ -1,7 +1,7 @@
 export interface NodeModel {
     id: number;
     name: string;
-    nodeAbove: number;
+    nodeAbove: string;
     notes: string;
     user: string;
 }

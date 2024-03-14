@@ -1,13 +1,21 @@
 import React, { useEffect, useRef, useState } from "react"
 import "./NodesPage.scss";
-import { useAppSelector } from "../store/hooks";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
 import NodeComponent from "../components/NodeComponent";
 import { NodeModel } from "../models/NodeModel";
-import NodeMenu from "../components/NodeMenu";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { nodeActions } from "../store/nodesSlice";
+import { NoteModel } from "../models/NoteModel";
+import CreateNode from "../components/CreateNode";
+import { MenuItem } from "../models/MenuItemModel";
+import Menu from "../components/Menu";
 
 const NodesPage = () => {
   const nodes = useAppSelector((state) => state.nodes.nodes);
+  const notes = useAppSelector((state) => state.nodes.notes);
+  const dispatch = useAppDispatch();
   const [activeNodesList, setActiveNodesList] = useState<NodeModel[]>([]);
+  const [currentNotesList, setCurrentNotesList] = useState<NoteModel[]>([]);
 
   const currentNodeId = useAppSelector((state) => state.nodes.currentNodeId);
 
@@ -27,10 +35,9 @@ const NodesPage = () => {
     lastX: 0,
     lastY: 0
   })
-
-  //dragging logic
+  
   var isDragging = false;
-
+  
   useEffect(() => {
     if (!boxRef.current || !containerRef.current) return;
 
@@ -85,9 +92,11 @@ const NodesPage = () => {
 
   var numDivs: number;
   const [divElements, setDivElements] = useState<JSX.Element[]>([]);
+  const [divElementsNotes, setDivElementsNotes] = useState<JSX.Element[]>([]);
 
   useEffect(() => {
-    const newArray = nodes.filter(element =>element.id == currentNodeId ||element.nodeAbove == currentNodeId)
+    dispatch(nodeActions.updateCurrentNodeId());
+    const newArray = nodes.filter(element => element.nodeAbove == currentNodeId.toString())
     setActiveNodesList(newArray);
   }, [nodes, currentNodeId]);
 
@@ -106,13 +115,62 @@ const NodesPage = () => {
   }
   }, [activeNodesList]);
 
+  useEffect(() => {
+    let currentNode = nodes.find((element) => element.id == currentNodeId);
+    const notesIds = currentNode?.notes.match(/\d+/g);
+    if (notesIds) {
+      const currentNotes = notes.filter((element) => notesIds.includes(element.id.toString()))
+      setCurrentNotesList(currentNotes);
+    } else setCurrentNotesList([]);
+  }, [currentNodeId,nodes]);
+
+  var numDivsNotes: number;
+  useEffect(() => {
+    numDivsNotes = currentNotesList.length;
+    var divs = [];
+    if(currentNotesList){
+      for (let i = 1; i <= numDivsNotes; i++) {
+      divs.push(<div key={i} id = {currentNotesList[i-1].id.toString()} className="notesListElement">
+            {currentNotesList[i-1].name}
+          </div>);
+      setDivElementsNotes(divs);
+    }
+  }
+  }, [currentNotesList]);
+  
+  //Setting up Menu.tsx
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const goNodeAbove = () => {
+    const node = nodes.find((element) => element.id === currentNodeId);
+    if(node){
+    sessionStorage.setItem("currentNodeId", node!.nodeAbove.toString())
+    dispatch(nodeActions.updateCurrentNodeId());
+    }
+  }
+  const menuItems: MenuItem[] = [
+    { name: 'Tree Overview', link: '/TreeOverview' },
+    { name: 'Home', link: '/Home'},
+    ...(currentNodeId !== 1 ? [{ name: 'Notes Page', link: '/NotesPage' }] : []),
+    { name: 'Node Above', link: '/NodesPage', onClick:goNodeAbove }
+  ];
+  
   return (
     <main>
       <div ref={containerRef} className="mainContainer">
-        <NodeMenu/>
+        <Menu items={menuItems} openModal={() => setIsModalOpen(true)} modalParameter={"New Node"}/>
+        <CreateNode isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}/>
+        {(currentNodeId !==1)&&<div className="currentNodeName">{(nodes.find((element) => element.id == currentNodeId))?.name}</div>}
         <div className="nodeList">
-        {activeNodesList.length ? divElements : <div/> }
+          {activeNodesList.length ? divElements : <div/> }
         </div>
+        {currentNodeId !== 1 &&
+        <Link to={"/NotesPage"}>
+          <div className="notesListMenu">
+            <div className="notesListElement">Notes:</div>
+            {currentNotesList.length ? divElementsNotes : <div/> }  
+          </div>
+        </Link>}
       </div>
     </main>
   );

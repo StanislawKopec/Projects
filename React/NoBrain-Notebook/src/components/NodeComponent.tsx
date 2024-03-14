@@ -1,12 +1,10 @@
 import React, { useState } from "react"
-import { useNavigate } from "react-router-dom";
 import { NodeModel } from "../models/NodeModel";
 import "./NodeComponent.scss";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { nodeActions } from "../store/nodesSlice";
-import { useGetNotesOfNodeQuery } from "../api/apiSlice";
 import { useAppSelector } from "../store/hooks";
 import { BASE_URL } from "../config";
 
@@ -88,6 +86,7 @@ const NodeMenu: React.FC<NodeMenuProps> = ({ isOpen, position, onClose, nodeId})
               axios.get(`${BASE_URL}/api/Nodes/GetNodes`, {params})
               .then((response) => {
                 dispatch(nodeActions.updateNodeList(response.data))
+                onClose();
               })
               .catch((error) => {
                 console.error('Error:', error);
@@ -95,7 +94,6 @@ const NodeMenu: React.FC<NodeMenuProps> = ({ isOpen, position, onClose, nodeId})
               console.log('DELETE request successful');
           })
           .catch((error) => {
-              // Handle any errors that occurred during the request
               console.error('Error making DELETE request', error);
           });
   }
@@ -109,7 +107,7 @@ const NodeMenu: React.FC<NodeMenuProps> = ({ isOpen, position, onClose, nodeId})
   const editNodeName = (newName: string) => {
       axios.put(`${BASE_URL}/api/Nodes/EditNodeName`, {id:nodeId, name:newName})
       .then((response) => {
-          axios.get(`${BASE_URL}/api/Nodes`)
+          axios.get(`${BASE_URL}/api/Nodes/GetNodes`, {params})
           .then((response) => {
             dispatch(nodeActions.updateNodeList(response.data))
             onClose();
@@ -117,7 +115,6 @@ const NodeMenu: React.FC<NodeMenuProps> = ({ isOpen, position, onClose, nodeId})
           .catch((error) => {
             console.error('Error:', error);
           });
-        console.log('PUT request successful:', response.data);
       })
       .catch((error) => {
         console.error('PUT request error:', error);

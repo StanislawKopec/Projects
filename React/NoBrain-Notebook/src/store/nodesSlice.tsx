@@ -1,7 +1,5 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { NodeModel } from "../models/NodeModel";
-import axios from "axios";
-import { apiSlice, useGetNodesQuery } from "../api/apiSlice";
 import { NoteModel } from "../models/NoteModel";
 
 const initialState = {
@@ -17,7 +15,7 @@ const nodesSlice = createSlice({
   initialState,
   reducers: {
     updateNodeList(state,action){
-        state.nodes = action.payload;
+      state.nodes = action.payload;
     },
     updateCurrentNodeId(state){
       state.currentNodeId = parseInt(sessionStorage.getItem("currentNodeId")!);
@@ -26,7 +24,9 @@ const nodesSlice = createSlice({
       state.notes = action.payload;
     },
     updateCurrentNoteId(state, action){
-      state.currentNoteId = action.payload;
+      if(state.currentNoteId === action.payload){
+        state.currentNoteId = 0;
+      }else state.currentNoteId = action.payload;
     },
     },
 });

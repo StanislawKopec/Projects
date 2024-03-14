@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\React projects\\nobrain\\GoApi\\GoApi\\GoApi.csproj": {}
+    "C:\\Users\\stani\\OneDrive\\Dokumenty\\GitHub\\Projects\\React\\NoBrain-Notebook\\Api\\GoApi\\GoApi.csproj": {}
   },
   "projects": {
-    "E:\\React projects\\nobrain\\GoApi\\GoApi\\GoApi.csproj": {
+    "C:\\Users\\stani\\OneDrive\\Dokumenty\\GitHub\\Projects\\React\\NoBrain-Notebook\\Api\\GoApi\\GoApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\React projects\\nobrain\\GoApi\\GoApi\\GoApi.csproj",
+        "projectUniqueName": "C:\\Users\\stani\\OneDrive\\Dokumenty\\GitHub\\Projects\\React\\NoBrain-Notebook\\Api\\GoApi\\GoApi.csproj",
         "projectName": "GoApi",
-        "projectPath": "E:\\React projects\\nobrain\\GoApi\\GoApi\\GoApi.csproj",
+        "projectPath": "C:\\Users\\stani\\OneDrive\\Dokumenty\\GitHub\\Projects\\React\\NoBrain-Notebook\\Api\\GoApi\\GoApi.csproj",
         "packagesPath": "C:\\Users\\stani\\.nuget\\packages\\",
-        "outputPath": "E:\\React projects\\nobrain\\GoApi\\GoApi\\obj\\",
+        "outputPath": "C:\\Users\\stani\\OneDrive\\Dokumenty\\GitHub\\Projects\\React\\NoBrain-Notebook\\Api\\GoApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -105,7 +104,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -69,6 +69,7 @@ const Login: React.FC = () => {
           autoComplete="off"
           className="form-login"
         >
+          <label htmlFor="username">Username</label>
           <input
             id="username"
             name="username"
@@ -78,7 +79,7 @@ const Login: React.FC = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
-
+          <label htmlFor="password">Password</label>
           <input
             id="password"
             name="password"
@@ -90,7 +91,7 @@ const Login: React.FC = () => {
             //error={formik.touched.password && Boolean(formik.errors.password)}
             //helperText={formik.touched.password && formik.errors.password}
           />
-
+          <label></label>
           <button
             className="submit-btn"
             disabled={formik.isSubmitting}

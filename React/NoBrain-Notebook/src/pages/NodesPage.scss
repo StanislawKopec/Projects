@@ -5,13 +5,35 @@
   max-height: 100vh;
   background-color: rgba(0, 0, 0, 0.644);
   display: flex;
-  justify-content: center;
   margin: 0;
 
   .nodeList{
+    position: fixed;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin-top: 150px;
+    top: 150px;
+    max-width: 100%;
+    margin: auto auto;
+    z-index: 5;
+  }
+  .notesListMenu{
+    position: fixed;
+    top: 100px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    cursor: pointer;
+    .notesListElement{
+      height: 40px;
+      width: 100%;
+      background-color: rgb(205, 197, 197);
+      border-bottom: 1px solid black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 500;
+      font-size: 15px;
+    }
   }
 }
 
@@ -29,13 +51,38 @@ main {
   width: 800px;
   overflow: hidden;
 }
-
-.box {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: hotpink;
-  height: 60px;
-  width: 60px;
-  cursor: pointer;
+.currentNodeName{
+  display: flex;
+  justify-content: center;
+  min-width: 200px;
+  padding: 10px;
+  height: auto;
+  position: fixed;
+  top: 100px;
+  font-size: large;
+  font-weight: 600;
+  background-color: rgb(205, 197, 197);
+  border-radius: 0 0 5px 5px;
+  border: 1px solid rgb(158, 134, 0);
+}
+@media only screen and (min-width: 600px) {
+  .nodeList{
+    grid-template-columns: 1fr 1fr;
+  }
+  .notesListMenu{
+    width: 100px;
+  }
+}
+@media only screen and (min-width: 800px) {
+  .nodeList{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .nodeList{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .notesListMenu{
+    width: 200px;
+  }
 }

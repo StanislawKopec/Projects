@@ -101,7 +101,7 @@ const Register: React.FC = () => {
             }
           />
           {formik.errors.username && formik.touched.username && (
-            <p className="error">{formik.errors.email}</p>
+            <p className="error">{formik.errors.username}</p>
           )}
 
           <label htmlFor="password">Password</label>
@@ -136,6 +136,7 @@ const Register: React.FC = () => {
                 : ""
             }
           />
+          <label style={{height: '10px'}}></label>
           {formik.errors.confirmPassword && formik.touched.confirmPassword && (
             <p className="error">{formik.errors.confirmPassword}</p>
           )}

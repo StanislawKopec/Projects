@@ -1,9 +1,9 @@
 import logo from "./logo.svg";
-import {Route, Routes, BrowserRouter } from 'react-router-dom';
+import {Route, Routes, BrowserRouter, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import Home from "./pages/Home";
 import NotesPage from "./pages/NotesPage";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import nodesSlice, { nodeActions } from "./store/nodesSlice";
 import store from "./store";
 import axios from "axios";
@@ -13,15 +13,16 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import RouteGuard from "./store/RouteGuard";
 import NotFoundPage from "./pages/NotFoundPage";
-import { useAppSelector } from "./store/hooks";
+import { useAppDispatch, useAppSelector } from "./store/hooks";
 import authSlice, { authActions } from "./store/auth-slice";
 import TreeOverview from "./pages/TreeOverview";
 import NodeOverview from "./pages/NodeOverview";
 import { BASE_URL } from "./config";
+import About from "./pages/About";
 
 
 function App() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.auth.loggedInUser);
 
   const params = {
@@ -55,11 +56,26 @@ function App() {
       dispatch(authActions.login(loggedInUser))
     }
   })
+
+  /*useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then((registration) => {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          })
+          .catch((error) => {
+            console.error('ServiceWorker registration failed: ', error);
+          });
+      });
+    }
+  }, []);*/  
   
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/Home" element={<Home />} />
+      <Route path="/About" element={<About />} />
       <Route path="/Login" element={<Login />} />
       <Route path="/Register" element={<Register/>} />
       <Route path="/NotesPage" element={<RouteGuard><NotesPage /></RouteGuard>} />

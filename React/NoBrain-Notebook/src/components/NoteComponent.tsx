@@ -11,7 +11,8 @@ import { BASE_URL } from "../config";
 const NoteComponent:React.FC<NoteProps> = ({note}) => {
     const dispatch = useDispatch();
     const [popUpOpen, setPopUpOpen] = useState(false);
-      const [popUpPosition, setPopUpPosition] = useState({ top: 0, left: 0 });
+    const [popUpPosition, setPopUpPosition] = useState({ top: 0, left: 0 });
+    const currentNoteId = useAppSelector((state) => state.nodes.currentNoteId);
 
     const onClickNoteOpen = () => {
         dispatch(nodeActions.updateCurrentNoteId(note.id));
@@ -31,7 +32,8 @@ const NoteComponent:React.FC<NoteProps> = ({note}) => {
         <div>
             <div
             onContextMenu={handleContextMenu}
-            className={"noteKulka"}
+            className="noteKulka"
+            style={{ backgroundColor: currentNoteId === note.id ? 'rgba(77, 156, 79, 0.86)' : '' }}
             onClick={() => {
                  onClickNoteOpen();
             }}
@@ -42,8 +44,6 @@ const NoteComponent:React.FC<NoteProps> = ({note}) => {
         </div>
     );
 };
-
-
 
 const NoteMenu: React.FC<NodeMenuProps> = ({ isOpen, position, onClose, noteId}) => {
     const dispatch = useDispatch();
@@ -77,31 +77,29 @@ const NoteMenu: React.FC<NodeMenuProps> = ({ isOpen, position, onClose, noteId})
                             dispatch(nodeActions.updateNodeList(response.data))
                             })
                             .catch((error) => {
-                            console.error('Error:', error);
+                              console.error('Error:', error);
                             });
                     })
                 })
                 .catch((error) => {
                   console.error('Error:', error);
                 });
-                console.log('DELETE request successful', response);
             })
             .catch((error) => {
-                // Handle any errors that occurred during the request
                 console.error('Error making DELETE request', error);
             });
     }
 
     let inputValue = "";
     const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault(); // Prevent the form from submitting and reloading the page
+        e.preventDefault(); 
         editNoteName(inputValue);
       };
 
     const editNoteName = (newName: string) => {
         axios.put(`${BASE_URL}/api/Notes/EditNoteName`, {id:noteId, name:newName})
         .then((response) => {
-            axios.get(`${BASE_URL}/api/Notes/GetAllNotes`)
+            axios.get(`${BASE_URL}/api/Notes/GetAllNotes`, {params})
             .then((response) => {
               dispatch(nodeActions.updateNoteList(response.data))
               onClose();
