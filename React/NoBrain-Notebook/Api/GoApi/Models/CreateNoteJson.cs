@@ -7,7 +7,7 @@ namespace GoApi.Models
         public string Name { get; set; }
         [AllowNull]
         public string Note { get; set; }
-        public int Node { get; set; }
-        public string User { get; set; }
+        public int NodeID { get; set; }
+        public int UserID { get; set; }
     }
 }

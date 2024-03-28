@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zAJe5M4ClPXnm83k20Oltfm8A6y4L3PDB3dK5dD7JHzHlmudD/ogEnShJ+kWKxmf4zW0HhaE57zJVN15z3r0mw==",
+  "dgSpecHash": "q8XkvUd4HZW9iEXECvxIz9wPY820+1xlSQx3V3iwZBOBX77GAa230hXSqfSEWMHQe8Q8zm4R7EI/kCAMGXVOGw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\stani\\OneDrive\\Dokumenty\\GitHub\\Projects\\React\\NoBrain-Notebook\\Api\\GoApi\\GoApi.csproj",
+  "projectFilePath": "E:\\Pulpit\\React projects\\nobrain\\Api\\GoApi\\GoApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\stani\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\stani\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

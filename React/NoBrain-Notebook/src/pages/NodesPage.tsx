@@ -96,7 +96,7 @@ const NodesPage = () => {
 
   useEffect(() => {
     dispatch(nodeActions.updateCurrentNodeId());
-    const newArray = nodes.filter(element => element.nodeAbove == currentNodeId.toString())
+    const newArray = nodes.filter(element => element.nodeAbove == currentNodeId)
     setActiveNodesList(newArray);
   }, [nodes, currentNodeId]);
 
@@ -116,11 +116,9 @@ const NodesPage = () => {
   }, [activeNodesList]);
 
   useEffect(() => {
-    let currentNode = nodes.find((element) => element.id == currentNodeId);
-    const notesIds = currentNode?.notes.match(/\d+/g);
+    const notesIds = notes.filter(element => element.nodeID == currentNodeId);
     if (notesIds) {
-      const currentNotes = notes.filter((element) => notesIds.includes(element.id.toString()))
-      setCurrentNotesList(currentNotes);
+      setCurrentNotesList(notesIds);
     } else setCurrentNotesList([]);
   }, [currentNodeId,nodes]);
 

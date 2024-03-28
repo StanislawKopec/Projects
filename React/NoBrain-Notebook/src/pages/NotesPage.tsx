@@ -15,7 +15,7 @@ const NotesPage = () => {
   if(sessionStorage.getItem("currentNodeId")===null){
     sessionStorage.setItem("currentNodeId", "1");
   }
-  const user = useAppSelector((state) => state.auth.loggedInUser);
+  const userId = useAppSelector((state) => state.auth.loggedInUserId);
   const nodes = useAppSelector((state) => state.nodes.nodes);
   const notes = useAppSelector((state) => state.nodes.notes);
   const currentNodeId = useAppSelector((state) => state.nodes.currentNodeId);
@@ -48,7 +48,7 @@ const NotesPage = () => {
   };
 
   const params = {
-    user: user,
+    userId: userId,
   }
 
   const saveNotes = () =>{
@@ -68,12 +68,10 @@ const NotesPage = () => {
 
   useEffect(() => {
     dispatch(nodeActions.updateCurrentNodeId());
-    let currentNode = nodes.find((element) => element.id == currentNodeId);
-    const notesIds = currentNode?.notes.match(/\d+/g);
-    if (notesIds) {
-      const currentNotes = notes.filter((element) => notesIds.includes(element.id.toString()))
-      setCurrentNotesList(currentNotes);
-    } 
+    const currentNotes = notes.filter(element => element.nodeID == currentNodeId);
+    setCurrentNotesList(currentNotes);
+    console.log(notes,currentNotes);
+    
   }, [currentNodeId, nodes, notes]);
 
   var numDivs: number;

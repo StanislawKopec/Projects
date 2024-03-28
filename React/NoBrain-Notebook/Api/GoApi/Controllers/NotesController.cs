@@ -19,9 +19,9 @@ namespace GoApi.Controllers
         }
 
         [HttpGet("GetAllNotes")]
-        public async Task<ActionResult<List<NoteModel>>> GetAllNotes(string user)
+        public async Task<ActionResult<List<NoteModel>>> GetAllNotes(int userId)
         {
-            return Ok(await dbContext.Notes.Where(e=> e.User == user).ToListAsync());
+            return Ok(await dbContext.Notes.Where(e=> e.UserID == userId).ToListAsync());
         }
         [HttpGet("GetNotesOfNode/{id:int}")]
         public async Task<ActionResult<NoteModel>> GetNotesOfNode(int id)
@@ -68,7 +68,7 @@ namespace GoApi.Controllers
         [HttpPost("CreateNewNote")]
         public async Task<ActionResult> CreateNote(CreateNoteJson noteData)
         {
-            NoteModel note = new NoteModel() { Name = noteData.Name, Note = noteData.Note, Node = noteData.Node, User = noteData.User };
+            NoteModel note = new NoteModel() { Name = noteData.Name, Note = noteData.Note, NodeID = noteData.NodeID, UserID = noteData.UserID };
             await dbContext.Notes.AddAsync(note);
             dbContext.SaveChanges();
             return Ok(note.ID);

@@ -69,7 +69,7 @@ namespace GoApi.Controllers
                     string compare = BCrypt.Net.BCrypt.HashPassword(password, user.salt);
                     if (compare == user.password)
                     {
-                        return Ok(user.username);
+                        return Ok(new { Username = user.username, UserId = user.Id });
                     }
                     else
                         return Problem("Wrong username or password");

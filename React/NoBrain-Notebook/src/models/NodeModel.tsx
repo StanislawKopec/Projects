@@ -1,7 +1,6 @@
 export interface NodeModel {
     id: number;
     name: string;
-    nodeAbove: string;
-    notes: string;
+    nodeAbove: number;
     user: string;
 }

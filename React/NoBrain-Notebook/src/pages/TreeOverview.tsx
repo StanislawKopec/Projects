@@ -108,7 +108,7 @@ const TreeOverview = () => {
 };
     
   const segregateNodes = (nodes: NodeModel[], parentId?: number): JSX.Element[] => {
-    const children = nodes.filter(node => parseInt(node.nodeAbove.toString()) === parentId);
+    const children = nodes.filter(node => node.nodeAbove === parentId);
 
     if (children.length === 0) {return []};
 

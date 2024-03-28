@@ -1,13 +1,9 @@
-import logo from "./logo.svg";
 import {Route, Routes, BrowserRouter, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import Home from "./pages/Home";
 import NotesPage from "./pages/NotesPage";
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef, useState } from "react";
 import nodesSlice, { nodeActions } from "./store/nodesSlice";
-import store from "./store";
 import axios from "axios";
-import { NodeModel } from "./models/NodeModel";
 import NodesPage from "./pages/NodesPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -23,14 +19,13 @@ import About from "./pages/About";
 
 function App() {
   const dispatch = useAppDispatch();
-  const user = useAppSelector((state) => state.auth.loggedInUser);
-
+  const userId = useAppSelector((state) => state.auth.loggedInUserId);
   const params = {
-    user: user,
+    userId: userId,
   };
 
   useEffect(()=>{
-    if(user)
+    if(userId)
     axios.get(`${BASE_URL}/api/Nodes/GetNodes`, {params})
         .then((response) => {
           dispatch(nodeActions.updateNodeList(response.data))
@@ -38,22 +33,24 @@ function App() {
         .catch((error) => {
           console.error('Error:', error);
         });
-  })
+  },[userId])
   useEffect(()=>{
-    if(user)
+    if(userId)
     axios.get(`${BASE_URL}/api/Notes/GetAllNotes`, {params})
         .then((response) => {
           dispatch(nodeActions.updateNoteList(response.data))
+          
         })
         .catch((error) => {
           console.error('Error:', error);
         });
-  })
+  },[userId])
   useEffect(()=>{
     const loggedInUser = sessionStorage.getItem("loggedInUser");
+    const loggedInUserId = sessionStorage.getItem("loggedInUserId");
     const loggedIn = sessionStorage.getItem("isLoggedIn");
     if(loggedIn == "true"){
-      dispatch(authActions.login(loggedInUser))
+      dispatch(authActions.login({ username: loggedInUser, userId: loggedInUserId }))
     }
   })
 

@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useAppSelector } from '../store/hooks';
 import { BASE_URL } from '../config';
 import { nodeActions } from '../store/nodesSlice';
+import { NULL } from 'sass';
 
 export interface ModalProps {
     isOpen: boolean;
@@ -14,27 +15,26 @@ export interface ModalProps {
 export const CreateNode: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 const dispatch = useDispatch();
 const [inputValue, setInputValue] = useState<string>(''); 
-const user = useAppSelector((state) => state.auth.loggedInUser);
+const userId = useAppSelector((state) => state.auth.loggedInUserId);
 const currentNodeId = useAppSelector((state) => state.nodes.currentNodeId);
 
 
 const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value); // Update the input value as the user types
+    setInputValue(event.target.value); 
 };
 
 const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault(); 
     
     const params = {
-    user: user,
+        userId: userId,
     };
 
     //Update database
     axios.post(`${BASE_URL}/api/Nodes/CreateNode`, {
     "name": inputValue,
-    "notes": "",
-    "nodeAbove": currentNodeId.toString(),
-    "user": user,
+    "nodeAbove": currentNodeId,
+    "userID": userId,
     })
     .then((response) => {
         axios.get(`${BASE_URL}/api/Nodes/GetNodes`, {params})

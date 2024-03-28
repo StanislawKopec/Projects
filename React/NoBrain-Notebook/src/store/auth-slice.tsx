@@ -6,17 +6,23 @@ const authSlice = createSlice({
   initialState: {
     isLoggedIn: false,
     loggedInUser: "",
+    loggedInUserId: 0,
   },
   reducers: {
     login(state, action) {
-      sessionStorage.setItem("isLoggedIn", "true");
-      sessionStorage.setItem("loggedInUser", action.payload);
-      state.isLoggedIn = true;
-      state.loggedInUser = action.payload;
+      if(action.payload.username){
+        sessionStorage.setItem("isLoggedIn", "true");
+        sessionStorage.setItem("loggedInUser", action.payload.username);
+        sessionStorage.setItem("loggedInUserId", action.payload.userId);
+        state.isLoggedIn = true;
+        state.loggedInUser = action.payload.username;
+        state.loggedInUserId = action.payload.userId;
+      }
     },
     logout(state) {
       sessionStorage.setItem("isLoggedIn", "false");
       sessionStorage.setItem("loggedInUser", "");
+      sessionStorage.setItem("loggedInUserId", "");
       state.isLoggedIn = false;
     },
     register(state, action) {

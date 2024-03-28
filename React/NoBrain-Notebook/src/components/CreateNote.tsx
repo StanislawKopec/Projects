@@ -19,18 +19,16 @@ export const CreateNote: React.FC<ModalProps> = ({ isOpen, onClose }) => {
     const [inputValue, setInputValue] = useState<string>('');
     const notes = useAppSelector((state) => state.nodes.notes);
     const nodes = useAppSelector((state) => state.nodes.nodes);
-    const user = useAppSelector((state) => state.auth.loggedInUser);
+    const user = useAppSelector((state) => state.auth.loggedInUserId);
 
     const params = {
-    user:user,
+        userId :user,
     }
 
     useEffect(() => {
-        let currentNode = nodes.find((element) => element.id == currentNodeId);
-        const notesIds = currentNode?.notes.match(/\d+/g);
+        const notesIds = notes.filter(element => element.nodeID == currentNodeId);
         if (notesIds) {
-        const currentNotes = notes.filter((element) => notesIds.includes(element.id.toString()))
-        setCurrentNotesList(currentNotes);
+        setCurrentNotesList(notesIds);
         } 
     }, [currentNodeId, nodes, notes]);
 
@@ -46,37 +44,18 @@ export const CreateNote: React.FC<ModalProps> = ({ isOpen, onClose }) => {
     }
 
     axios
-        .post(`${BASE_URL}/api/Notes/CreateNewNote`, { //Create note in notes
+        .post(`${BASE_URL}/api/Notes/CreateNewNote`, { //Create note
         name: inputValue,
         note: '',
-        node: currentNodeId,
-        user: user,
+        nodeID: currentNodeId,
+        userID: user,
         })
-        .then((response) => {
-            var noteId = response.data;
+        .then(() => {
         axios
             .get(`${BASE_URL}/api/Notes/GetAllNotes`, {params}) //Get updated notes list
             .then((response) => {
-            dispatch(nodeActions.updateNoteList(response.data));
-            onClose();
-            axios
-                .put(`${BASE_URL}/api/Nodes/CreateNewNote`, { //Update notes in current node
-                    nodeId: currentNodeId,
-                    noteId: noteId,
-                    user: user,
-                })
-                .then((response) => {
-                    axios.get(`${BASE_URL}/api/Nodes/GetNodes`, {params}) //Get updated nodes list
-                    .then((response) => {
-                        dispatch(nodeActions.updateNodeList(response.data))
-                    })
-                    .catch((error) => {
-                        console.error('Error:', error);
-                    });
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
+                dispatch(nodeActions.updateNoteList(response.data));
+                onClose();
             })
             .catch((error) => {
             console.error('Error:', error);

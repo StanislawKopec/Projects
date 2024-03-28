@@ -16,7 +16,7 @@ const basicSchema = yup.object().shape({
 const checkLogin = async (username: string, password: string, formik: any, navigate: any, dispatch: any) => {
   try {
     const response = await axios.get(`${BASE_URL}/api/Login/${username}/${password}`);
-    dispatch(authActions.login(response.data.toString()));
+    dispatch(authActions.login(response.data));
     formik.resetForm();
     navigate("/home");
   } catch (error) {
