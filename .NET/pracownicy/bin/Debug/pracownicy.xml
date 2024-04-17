@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfPracownik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Pracownik>
+    <Imie>123</Imie>
+    <Nazwisko>11</Nazwisko>
+    <DataUrodzenia>2024-04-03T16:48:38.7863042+02:00</DataUrodzenia>
+    <Pensja>4000</Pensja>
+    <Stanowisko>projektant</Stanowisko>
+    <RodzajUmowy>umowa na czas nieokreślony</RodzajUmowy>
+  </Pracownik>
+  <Pracownik>
+    <Imie>123</Imie>
+    <Nazwisko>132</Nazwisko>
+    <DataUrodzenia>2024-04-03T16:48:48.999273+02:00</DataUrodzenia>
+    <Pensja>4000</Pensja>
+    <Stanowisko>młodszy programista</Stanowisko>
+    <RodzajUmowy>umowa na czas nieokreślony</RodzajUmowy>
+  </Pracownik>
+</ArrayOfPracownik>
