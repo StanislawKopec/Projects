@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Event>
+    <Title>Title1</Title>
+    <Description>Description1</Description>
+    <Date>2024-04-19T10:45:13.4177505+02:00</Date>
+    <Type>Praca</Type>
+    <Priority>Wysoki</Priority>
+  </Event>
+  <Event>
+    <Title>Title2</Title>
+    <Description>Description2</Description>
+    <Date>2024-04-19T10:45:13.4177505+02:00</Date>
+    <Type>Rodzina</Type>
+    <Priority>Średni</Priority>
+  </Event>
+  <Event>
+    <Title>Title3</Title>
+    <Description>Description3</Description>
+    <Date>2024-04-19T10:45:13.4177505+02:00</Date>
+    <Type>Rozrywka</Type>
+    <Priority>Niski</Priority>
+  </Event>
+</ArrayOfEvent>
