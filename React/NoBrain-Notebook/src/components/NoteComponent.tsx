@@ -7,6 +7,7 @@ import { nodeActions } from "../store/nodesSlice";
 import axios from "axios";
 import ReactDOM from "react-dom";
 import { BASE_URL } from "../config";
+import { toast } from "react-toastify";
 
 const NoteComponent:React.FC<NoteProps> = ({note}) => {
     const dispatch = useDispatch();
@@ -48,7 +49,7 @@ const NoteComponent:React.FC<NoteProps> = ({note}) => {
 const NoteMenu: React.FC<NodeMenuProps> = ({ isOpen, position, onClose, noteId}) => {
     const dispatch = useDispatch();
     const currentNodeId = useAppSelector((state) => state.nodes.currentNodeId);
-    const user = useAppSelector((state) => state.auth.loggedInUser);
+    const userId = useAppSelector((state) => state.auth.loggedInUserId);
     const [editNameWindow, setEditNameWindow] = useState(false);
     if (!isOpen) return null;
 
@@ -57,35 +58,33 @@ const NoteMenu: React.FC<NodeMenuProps> = ({ isOpen, position, onClose, noteId})
     }
 
     const params = {
-      user:user,
-    }
+      userId: userId,
+    };
 
     const handleDeleteNote = () =>{
         axios
             .delete(`${BASE_URL}/api/Notes/Delete/${noteId}`) //Delete note
             .then((response) => {
-                axios.get(`${BASE_URL}/api/Notes/GetAllNotes`, {params}) //Update notes
-                .then((response) => {
-                  dispatch(nodeActions.updateNoteList(response.data))
-                  axios.put(`${BASE_URL}/api/Nodes/DeleteNote`, { // Delete note from node
-                    nodeId: currentNodeId,
-                    noteId: noteId,
-                  }) 
-                    .then((response) => {
-                        axios.get(`${BASE_URL}/api/Nodes/GetNodes`, {params}) // Update nodes
-                            .then((response) => {
-                            dispatch(nodeActions.updateNodeList(response.data))
-                            })
-                            .catch((error) => {
-                              console.error('Error:', error);
-                            });
-                    })
+                toast.success('Note deleted successufully!');
+                axios.get(`${BASE_URL}/api/Notes/GetAllNotes`, {params}) //Update notes    
+                  .then((response) => {
+                      dispatch(nodeActions.updateNoteList(response.data))
+                      axios.get(`${BASE_URL}/api/Nodes/GetNodes`, {params}) // Update nodes
+                          .then((response) => {
+                          onClose();
+                          dispatch(nodeActions.updateNodeList(response.data))
+                          })
+                          .catch((error) => {
+                            console.error('Error:', error);
+                          });
                 })
                 .catch((error) => {
+                  toast.warning('Error!');
                   console.error('Error:', error);
                 });
             })
             .catch((error) => {
+                toast.warning('Error making DELETE request!');
                 console.error('Error making DELETE request', error);
             });
     }
@@ -101,6 +100,7 @@ const NoteMenu: React.FC<NodeMenuProps> = ({ isOpen, position, onClose, noteId})
         .then((response) => {
             axios.get(`${BASE_URL}/api/Notes/GetAllNotes`, {params})
             .then((response) => {
+              console.log(response.data)
               dispatch(nodeActions.updateNoteList(response.data))
               onClose();
             })

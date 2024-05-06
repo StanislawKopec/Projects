@@ -1,0 +1,38 @@
+<mat-card class="container">
+  <mat-card-header class="header">
+    <mat-card-title>{{ creatorName }}</mat-card-title>
+    <mat-icon class="action-item" (click)="onPostOptionsClick()">
+      <i class="fa-solid fa-ellipsis"></i>
+    </mat-icon>
+  </mat-card-header>
+
+  <img mat-card-image src="{{ postData.imageUrl }}" class="image" />
+  <mat-card-content class="content">{{ postData.comment }}</mat-card-content>
+  <mat-card-actions class="action-container">
+    <mat-icon class="action-item" color="warn" (click)="onLikeClick()">
+      <i class="fa-regular fa-heart" *ngIf="!likedByCurrentUser"></i
+      ><i class="fa-solid fa-heart" color="red" *ngIf="likedByCurrentUser"></i>
+    </mat-icon>
+    <mat-icon (click)="onReplyClick()" class="action-item" color="warn"
+      ><i class="fa-regular fa-comment"></i>
+    </mat-icon>
+    <mat-icon class="action-item" color="warn"
+      ><i class="fa-regular fa-paper-plane"></i
+    ></mat-icon>
+    <mat-icon class="action-item-right" color="warn"
+      ><i class="fa-regular fa-bookmark"></i
+    ></mat-icon>
+  </mat-card-actions>
+  <div class="under-post">
+    <span class="users-liking">Likes count: {{ likesCount }}</span>
+
+    <p class="post-description">
+      <span class="post-creator-name">{{ creatorName }}</span>
+      {{ postDescription }}
+    </p>
+    <span class="show-comments" (click)="onReplyClick()"
+      >See all the comments: {{ commentsCount }}</span
+    >
+    <p class="posted-time">{{ postTime | date : "yyyy/MM/dd HH:mm:ss" }}</p>
+  </div>
+</mat-card>

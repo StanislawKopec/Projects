@@ -15,6 +15,8 @@ import TreeOverview from "./pages/TreeOverview";
 import NodeOverview from "./pages/NodeOverview";
 import { BASE_URL } from "./config";
 import About from "./pages/About";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -69,19 +71,22 @@ function App() {
   }, []);*/  
   
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/Home" element={<Home />} />
-      <Route path="/About" element={<About />} />
-      <Route path="/Login" element={<Login />} />
-      <Route path="/Register" element={<Register/>} />
-      <Route path="/NotesPage" element={<RouteGuard><NotesPage /></RouteGuard>} />
-      <Route path="/NodesPage" element={<RouteGuard><NodesPage /></RouteGuard>} />
-      <Route path="/TreeOverview" element={<RouteGuard><TreeOverview /></RouteGuard>} />
-      <Route path="/NodeOverview" element={<RouteGuard><NodeOverview /></RouteGuard>} />
+    <div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Home" element={<Home />} />
+        <Route path="/About" element={<About />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Register" element={<Register/>} />
+        <Route path="/NotesPage" element={<RouteGuard><NotesPage /></RouteGuard>} />
+        <Route path="/NodesPage" element={<RouteGuard><NodesPage /></RouteGuard>} />
+        <Route path="/TreeOverview" element={<RouteGuard><TreeOverview /></RouteGuard>} />
+        <Route path="/NodeOverview" element={<RouteGuard><NodeOverview /></RouteGuard>} />
 
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+      <ToastContainer limit={3} newestOnTop={true} autoClose={1000}/>
+    </div>
   );
 }
 

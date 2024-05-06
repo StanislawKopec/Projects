@@ -99,7 +99,7 @@ const NodeOverview = () => {
   }, []);
 
   const menuItems: MenuItem[] = [
-    { name: 'Home', link: '/Home' },
+    {name: 'Home', link: '/Home' },
     {name: 'Tree Overview', link: '/TreeOverview'}
   ];
   

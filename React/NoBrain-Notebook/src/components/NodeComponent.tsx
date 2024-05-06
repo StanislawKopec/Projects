@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { nodeActions } from "../store/nodesSlice";
 import { useAppSelector } from "../store/hooks";
 import { BASE_URL } from "../config";
+import { toast } from "react-toastify";
 
 interface NodeProps {
   node: NodeModel;
@@ -68,16 +69,16 @@ interface NodeMenuProps {
 const NodeMenu: React.FC<NodeMenuProps> = ({ isOpen, position, onClose, nodeId}) => {
   const dispatch = useDispatch();
   const [editNameWindow, setEditNameWindow] = useState(false);
-  const user = useAppSelector(state => state.auth.loggedInUser);
+  const userId = useAppSelector(state => state.auth.loggedInUserId);
   if (!isOpen) return null;
 
   const toggleEditNameWindow = () => {
       setEditNameWindow(!editNameWindow);
   }
 
-  const params ={
-    user:user
-  }
+  const params = {
+    userId: userId,
+  };
 
   const handleDeleteNode = () =>{
       axios
@@ -86,14 +87,16 @@ const NodeMenu: React.FC<NodeMenuProps> = ({ isOpen, position, onClose, nodeId})
               axios.get(`${BASE_URL}/api/Nodes/GetNodes`, {params})
               .then((response) => {
                 dispatch(nodeActions.updateNodeList(response.data))
+                toast.success('Node deleted successufully!');
                 onClose();
               })
               .catch((error) => {
-                console.error('Error:', error);
+                toast.warning('Error! Cannot delete node with notes!');
               });
               console.log('DELETE request successful');
           })
           .catch((error) => {
+              toast.warning('Error! Cannot delete node with notes!');
               console.error('Error making DELETE request', error);
           });
   }
@@ -110,6 +113,7 @@ const NodeMenu: React.FC<NodeMenuProps> = ({ isOpen, position, onClose, nodeId})
           axios.get(`${BASE_URL}/api/Nodes/GetNodes`, {params})
           .then((response) => {
             dispatch(nodeActions.updateNodeList(response.data))
+            toast.success('Node name changed!');
             onClose();
           })
           .catch((error) => {

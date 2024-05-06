@@ -1,0 +1,33 @@
+<div class="main-container">
+  <div class="content-container">
+    <div class="instaClone">
+      <h2>Instaclone</h2>
+    </div>
+
+    <input #loginEmail class="input-field" placeholder="email" />
+    <input #loginPassword class="input-field" placeholder="password" />
+    <button
+      (click)="onLogin(loginEmail, loginPassword)"
+      mat-button
+      class="login-btn"
+    >
+      Log in
+    </button>
+
+    <div class="one-in-row">OR</div>
+    <div class="login-with-facebook">Login with Facebook</div>
+    <span routerLink="/resetPassword" class="reset-password"
+      >Forgot password?</span
+    >
+  </div>
+  <div class="register-container">
+    REgister
+    <button routerLink="register" routerLink="/register">Register</button>
+  </div>
+  <div class="download-app">
+    <span class="one-in-row">Download app</span>
+    <button>Google Store</button>
+    <button>Microsoft</button>
+  </div>
+  <div class="footer"></div>
+</div>

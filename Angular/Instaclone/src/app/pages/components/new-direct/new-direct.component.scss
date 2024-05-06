@@ -1,0 +1,74 @@
+@import "src/variables";
+.main-container {
+  height: 600px;
+  width: 400px;
+  overflow: hidden;
+}
+::ng-deep .mat-dialog-container {
+  padding: 0;
+}
+.header {
+  width: 100%;
+  height: 60px;
+  position: relative;
+  font-size: 30px;
+  border-bottom: 1px solid $border-color;
+  box-sizing: border-box;
+  .item1 {
+    width: 50px;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .item2 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .item3 {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgb(11, 70, 157);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 50px;
+    font-size: 20px;
+  }
+}
+
+.search-container {
+  position: relative;
+  height: auto;
+  min-height: 100px;
+  width: 100%;
+  border-bottom: 1px solid $border-color;
+  box-sizing: border-box;
+  .item1 {
+    height: 100%;
+    width: 30px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: 20px;
+  }
+  .form {
+    width: 330px;
+    height: auto;
+    position: absolute;
+    left: 40px;
+    .input-field {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.search-results {
+  height: 460px;
+  overflow-y: scroll;
+}

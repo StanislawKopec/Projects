@@ -1,0 +1,100 @@
+@import "src/variables";
+
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  padding: auto;
+  margin-bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: white;
+  border-bottom: 1px solid $border-color;
+
+  .instaclone {
+    float: left;
+    margin: 0.5rem;
+    font-size: 30px;
+    cursor: pointer;
+  }
+  .icon {
+    float: right;
+    height: 100%;
+    width: 4rem;
+    text-align: center;
+    margin: auto;
+    line-height: 30px;
+    .btn {
+      height: 3rem;
+      width: 3rem;
+      font-size: 2rem;
+    }
+  }
+  .search {
+    float: right;
+    right: 20px;
+    margin: 0.5rem;
+    line-height: 40px;
+    width: 300px;
+    height: 100%;
+    border: none;
+    input {
+      height: 40px;
+      width: 300px;
+      border-radius: 10px;
+      border: none;
+      height: 30px;
+      background-color: rgba(166, 162, 162, 0.205);
+      box-sizing: border-box;
+    }
+    input:focus {
+      border: none;
+      outline: none;
+    }
+  }
+}
+.btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.5rem;
+}
+.post-feed {
+  max-width: 600px;
+  margin: 1em auto 5em;
+}
+::ng-deep .menu {
+  padding: 0px;
+  width: 170px;
+}
+::ng-deep .menu-btn {
+  margin: 0px;
+  border-top: 1px solid $border-color;
+}
+.container-main {
+  background-color: rgba(193, 191, 191, 0.127);
+  height: auto;
+  width: 100%;
+  margin: 0;
+  position: absolute;
+}
+.relations {
+  min-width: 600px;
+  max-width: 600px;
+  height: 110px;
+  border: 1px solid $border-color;
+  margin: 5em auto 0;
+  display: flex;
+  background-color: white;
+  .relation {
+    width: 80px;
+    height: auto;
+    background-color: rgba(255, 0, 0, 0.144);
+
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+}

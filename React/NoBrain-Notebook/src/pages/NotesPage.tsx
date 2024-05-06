@@ -10,6 +10,8 @@ import { BASE_URL } from "../config";
 import { MenuItem } from "../models/MenuItemModel";
 import CreateNote from "../components/CreateNote";
 import Menu from "../components/Menu";
+import {  toast } from 'react-toastify';
+
 const NotesPage = () => {
   
   if(sessionStorage.getItem("currentNodeId")===null){
@@ -54,7 +56,9 @@ const NotesPage = () => {
   const saveNotes = () =>{
     axios.put(`${BASE_URL}/api/Notes/EditNote`, {id:currentNoteId, notes:textValue})
       .then((response) => {
-        console.log('PUT request successful:', response.data);
+        toast.success('Note saved successfully!', {
+          theme: 'colored',
+        });
         axios
         .get(`${BASE_URL}/api/Notes/GetAllNotes`, {params}) //Get updated notes list
         .then((response) => {
@@ -62,6 +66,9 @@ const NotesPage = () => {
         });
       })
       .catch((error) => {
+        toast.warning('Note saving error!', {
+          theme: 'colored',
+        });
         console.error('PUT request error:', error);
       });
   }
@@ -69,9 +76,7 @@ const NotesPage = () => {
   useEffect(() => {
     dispatch(nodeActions.updateCurrentNodeId());
     const currentNotes = notes.filter(element => element.nodeID == currentNodeId);
-    setCurrentNotesList(currentNotes);
-    console.log(notes,currentNotes);
-    
+    setCurrentNotesList(currentNotes);    
   }, [currentNodeId, nodes, notes]);
 
   var numDivs: number;

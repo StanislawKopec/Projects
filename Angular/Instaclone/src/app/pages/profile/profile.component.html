@@ -1,0 +1,80 @@
+<div class="container-main">
+  <div class="header">
+    <button class="item-h1"><i class="fa-solid fa-gear icon-h"></i></button>
+    <div class="item-h">
+      <button class="top-btn" (click)="openDialog()">
+        account<i class="fa-solid fa-angle-down"></i>
+      </button>
+    </div>
+    <button class="item-h2">
+      <i class="fa-solid fa-user-plus icon-h"></i>
+    </button>
+  </div>
+  <div class="top-content">
+    <div class="photo-name">
+      <div class="photo">
+        <label class="button" for="upload"
+          ><img id="profile-image" src="{{ currentUser?.profileImageUrl }}"
+        /></label>
+      </div>
+      <input
+        id="upload"
+        #photoSelector
+        (change)="onChangeProfileImg(photoSelector)"
+        type="file"
+        accept="image/*"
+      />
+      <div class="name">{{ currentUser?.publicName }}</div>
+    </div>
+    <div class="edit-name">
+      <div class="edit-name-group">
+        <div class="name">{{ currentUser?.realName }}</div>
+        <button class="item-h1"><i class="fa-solid fa-gear icon-h"></i></button>
+      </div>
+      <button class="edit-profile">edit profile</button>
+    </div>
+
+    <div class="logoutBtn-container">
+      <button matButton class="logoutBtn" (click)="onLogoutClick()">
+        Log Out
+      </button>
+    </div>
+  </div>
+  <div class="activity">
+    <div class="activity-item">posts</div>
+    <div class="activity-item">following</div>
+    <div class="activity-item">followed</div>
+  </div>
+  <div class="content-container">
+    <mat-button-toggle-group
+      class="toggle-group"
+      #toggleBtn="matButtonToggleGroup"
+    >
+      <mat-button-toggle
+        [ngClass]="
+          toggleState == 'yourPhotos' ? 'toggle-btn-pressed' : 'toggle-btn'
+        "
+        (click)="toggleState = 'yourPhotos'"
+        >icon</mat-button-toggle
+      >
+      <mat-button-toggle
+        [ngClass]="
+          toggleState == 'savedPhotos' ? 'toggle-btn-pressed' : 'toggle-btn'
+        "
+        (click)="toggleState = 'savedPhotos'"
+        >icon</mat-button-toggle
+      >
+      <mat-button-toggle
+        [ngClass]="
+          toggleState == 'youOnPhotos' ? 'toggle-btn-pressed' : 'toggle-btn'
+        "
+        (click)="toggleState = 'youOnPhotos'"
+        >icon</mat-button-toggle
+      >
+    </mat-button-toggle-group>
+
+    <div class="content">sth</div>
+  </div>
+
+  <app-footer></app-footer>
+</div>
