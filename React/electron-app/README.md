@@ -9,6 +9,8 @@ This project is a cross‑platform desktop app that combines:
 - A modern toolchain for fast builds and testing
 
 It is designed to run fully on the user’s machine, without requiring a network connection for core functionality. The UI renders charts, manages local state with Redux Toolkit, and communicates with the Electron main process using a secure preload bridge. End‑to‑end tests validate key user flows, while unit and component tests keep logic and UI predictable.
+<img width="1916" height="1030" alt="schedule" src="https://github.com/user-attachments/assets/4b14b800-7140-4dd7-986a-699aec83c9b8" />
+
 ## Key features
 - Desktop‑native app powered by Electron, with auto‑update support
 - Fast React UI with TypeScript and modern tooling
